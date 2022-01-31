@@ -1,0 +1,235 @@
+div.body {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    z-index: 0;
+}
+
+div.body__part-1, div.body__part-2, div.body__part-3 {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+div[class*="__midground"] {
+    width: 100%;
+    height: 100%;
+}
+
+div.body__part-1__midground__artwork {
+    display: flex;
+    position: absolute;
+    width: 100%;
+    height: 480px;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+}
+
+.body__part-1 .body__part-1__midground .body__part-1__midground__artwork .artwork-svg {
+    width: 480px;
+    height: 480px;
+}
+
+.body__part-1 .body__part-1__midground .body__part-1__midground__artwork .artwork_effect {
+    width: 480px;
+    height: 480px;
+}
+
+.body__part-1 .body__part-1__midground .body__part-1__midground__artwork .artwork_effect .artwork_starfall_bg,
+.body__part-1 .body__part-1__midground .body__part-1__midground__artwork .artwork_effect .artwork_sparkling_bg {
+    width: 100%;
+    height: 100%;
+}
+
+
+
+div.body__part-2__midground__artwork {
+    display: flex;
+    position: absolute;
+    width: 100%;
+    height: 480px;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+}
+
+.body__part-2 .body__part-2__midground .body__part-2__midground__artwork .artwork-2-svg {
+    width: 480px;
+    height: 480px;
+}
+
+
+
+div.body__part-3__midground__artwork {
+    display: flex;
+    position: absolute;
+    width: 100%;
+    height: 480px;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+}
+
+.body__part-3 .body__part-3__midground .body__part-3__midground__artwork video {
+    width: 320px;
+    height: 320px;
+}
+
+.body__part-3 .body__part-3__midground .body__part-3__midground__artwork .artwork-3_effect {
+    width: 100%;
+    height: 100vh;
+}
+
+.body__part-3 .body__part-3__midground .body__part-3__midground__artwork .artwork-3_effect .artwork-3_sparkling_bg {
+    width: 100%;
+    height: 100%;
+}
+
+/*
+Thung chu
+*/
+
+.body__part-1 .body__part-1__content {
+    position: absolute;
+    display: flex;
+    top: 50%;
+    width: 100%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+    padding: 0 15%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.body__part-1 .body__part-1__content .body__part-1__container__text {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+.body__part-1  .body__part-1__content .body__part-1__container__text .body__part-1__text:nth-child(1) {
+    font-size: 18pt;
+    color: #262626;
+}
+
+.body__part-1  .body__part-1__content .body__part-1__container__text .body__part-1__text:nth-child(2) {
+    font-size: 14pt;
+    margin-bottom: 5px;
+    font-family: 'MyriadPro-Light';
+    color: #262626;
+}
+
+
+
+.body__part-2 .body__part-2__content {
+    position: absolute;
+    display: flex;
+    top: 50%;
+    width: 100%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+    padding: 0 15%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.body__part-2 .body__part-2__content .body__part-2__container__text {
+    position: absolute;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+.body__part-2 .body__part-2__content .body__part-2__container__text .body__part-2__text {
+    font-size: 16pt;
+    margin-bottom: 5px;
+    font-family: 'MyriadPro-Light';
+    color: #262626;
+    text-align: right;
+}
+
+.body__part-2 .body__part-2__content-mid {
+    position: absolute;
+    display: flex;
+    top: 50%;
+    width: 100%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+    padding: 0 15%;
+    justify-content: center;
+    align-items: center;
+}
+
+.body__part-2 .body__part-2__content-mid .body__part-2__container__text-mid {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+.body__part-2 .body__part-2__content-mid .body__part-2__container__text-mid .body__part-2__text-mid {
+    font-size: 50pt;
+    margin-bottom: 5px;
+    font-family: 'MyriadPro-Bold';
+    color: #f6f6f6;
+    text-align: center;
+}
+
+
+
+.body__part-3 .body__part-3__content {
+    position: absolute;
+    display: flex;
+    top: 80%;
+    width: 100%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+    padding: 0 15%;
+    justify-content: center;
+    align-items: center;
+}
+
+.body__part-3 .body__part-3__content .body__part-3__container__text {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+.body__part-3 .body__part-3__content .body__part-3__container__text .body__part-3__text{
+    font-size: 14pt;
+    margin-bottom: 5px;
+    font-family: 'MyriadPro-Light';
+    color: #262626;
+}
+
+/*Chuyen doi hieu ung cua den*/
+.body__part-1 .body__part-1__content .body__part-1__content__toggle__button {
+    position: relative;
+    text-align: right;
+}
+
+.body__part-1 .body__part-1__content .body__part-1__content__toggle__button .body__part-1__content__button, 
+.body__part-1 .body__part-1__content .body__part-1__content__toggle__button .body__part-1__content__slash {
+    cursor: pointer;
+    font-size: 14pt;
+    margin-left: 5px;
+    font-family: 'MyriadPro-Light';
+}

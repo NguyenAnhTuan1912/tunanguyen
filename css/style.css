@@ -1,0 +1,122 @@
+@font-face {
+    font-family: 'MyriadPro-Regular';
+    src: url(font/MYRIADPRO-REGULAR.OTF);
+}
+
+@font-face {
+    font-family: 'MyriadPro-Bold';
+    src: url(font/MYRIADPRO-BOLD.OTF);
+}
+
+@font-face {
+    font-family: 'MyriadPro-Black';
+    src: url(font/MYRIADPRO-BLACK_0.OTF);
+}
+
+@font-face {
+    font-family: 'MyriadPro-Light';
+    src: url(font/MYRIADPRO-LIGHT_0.OTF);
+}
+
+@font-face {
+    font-family: 'Futha';
+    src: url(font/FUTHA___.TTF);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
+    font-family: 'MyriadPro-Regular';
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+}
+
+::-webkit-scrollbar { 
+    display: none;
+}
+
+/*
+Ba dau cham ben phai
+*/
+
+div.indexdot {
+    position: fixed;
+    width: 30px;
+    height: 100%;
+    top: 0;
+    left: calc(100vw - 30px);
+    z-index: 5;
+}
+
+div.indexdot__containner {
+    position: absolute;
+    width: 15px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+div.indexdot__containner ul li{
+    cursor: pointer;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: 1px solid #262626;
+    margin: 10px 0;
+    list-style-type: none;
+    transform: translateX(-50%);
+}
+
+.dot--active {
+    transition: ease-in-out 0.4s;
+    background-color: #262626;
+}
+
+/*
+Icon phuong tien truyen thong ben trai
+*/
+
+div.socialmedia {
+    position: fixed;
+    width: 30px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 5;
+}
+
+div.socialmedia__containner {
+    position: absolute;
+    width: 15px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+div.socialmedia__containner ul li a {
+    cursor: pointer;
+    font-size: 16pt;
+    margin: 10px 0;
+    margin-left: 20px;
+    text-decoration: none;
+    color: #262626;
+}
+
+/*
+Canvas
+*/
+.body__part-3__midground__artwork__planets {
+    position: absolute;
+    transform: rotateZ(-15deg);
+}
