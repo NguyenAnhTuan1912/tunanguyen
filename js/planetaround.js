@@ -53,7 +53,7 @@ const ball = [];
 
 function initBall() {
     for(var i = 0; i < 5; i++) {
-        var radius = getNumber(12, 10);
+        var radius = getNumber(size.x * 0.03, size.x * 0.02);
         var x = getNumber(size.x - radius, 10 + radius);
         var y = getNumber(-50, 50);
         var dx = getNumber(4, 1);
@@ -61,7 +61,7 @@ function initBall() {
     }
 
     for(var i = 0; i < 5; i++) {
-        var radius = getNumber(size.x * 0.05, size.x * 0.04);
+        var radius = getNumber(size.x * 0.03, size.x * 0.02);
         var x = getNumber(size.x - radius, 10 + radius);
         var y = getNumber(-50, 50);
         var dx = getNumber(1, 4);
