@@ -108,7 +108,7 @@
         display: inline;
         width: 60px;
         text-align: right;
-        line-height: var(30px);
+        line-height: 30px;
         transform: translateY(0);
         transition: ease-in-out 0.4s;
     }

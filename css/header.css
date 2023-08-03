@@ -14,92 +14,92 @@ header__navigate__row-1__col-3
 */
 
 :root {
-    --header__height: 60px;
-    --logo__width: 40px;
-    --logo__height: 40px;
-    --container__logo__width: 60px;
+  --header__height: 60px;
+  --logo__width: 40px;
+  --logo__height: 40px;
+  --container__logo__width: 60px;
 }
 
 div.header {
-    position: fixed;
-    width: 100%;
-    height: var(--header__height);
-    top: 0;
-    left: 0;
-    z-index: 10;
+  position: fixed;
+  width: 100%;
+  height: var(--header__height);
+  top: 0;
+  left: 0;
+  z-index: 10;
 }
 
 
 div.header__logo {
-    position: absolute;
-    height: var(--header__height);
-    width: var(--container__logo__width);
-    z-index: 2;
-    right: 0;
+  position: absolute;
+  height: var(--header__height);
+  width: var(--container__logo__width);
+  z-index: 2;
+  right: 0;
 }
 
 div.header__logo__container {
-    position: absolute;
-    margin: auto;
-    top: 50%;
-    transform: translateY(-40%);
+  position: absolute;
+  margin: auto;
+  top: 50%;
+  transform: translateY(-40%);
 }
 
 img.header__logo-svg {
-    width: var(--logo__width);
-    height: var(--logo__height);
+  width: var(--logo__width);
+  height: var(--logo__height);
 }
 
 
 div.header__name {
-    position: absolute;
-    float: left;
-    width: 120px;
-    height: var(--header__height);
-    left: 20px;
+  position: absolute;
+  float: left;
+  width: 120px;
+  height: var(--header__height);
+  left: 20px;
 }
 
 div.header__name__container {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    text-align: left;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  text-align: left;
 }
 
 div.header__name__container p {
-    cursor: default;
-    font-size: 14pt;
-    font-family: 'MyriadPro-Bold';
-    line-height: var(--header__height);
+  cursor: default;
+  font-size: 14pt;
+  font-family: 'MyriadPro-Bold';
+  line-height: var(--header__height);
 }
 
 div.header__navigate {
-    position: absolute;
-    width: 100%;
-    height: var(--header__height);
-    margin: 0 auto;
+  position: absolute;
+  width: 100%;
+  height: var(--header__height);
+  margin: 0 auto;
 }
 
 div.header__navigate__container {
-    width: 360px;
-    height: var(--header__height);
-    margin: 0 auto;
-    text-align: center;
+  width: 360px;
+  height: var(--header__height);
+  margin: 0 auto;
+  text-align: center;
 }
 
 div.header__navigate ul.header__navigate__row-1 li {
-    float: left;
-    display: inline;
-    width: 120px;
-    text-align: center;
-    line-height: var(--header__height);
+  float: left;
+  display: inline;
+  width: 120px;
+  text-align: center;
+  line-height: var(--header__height);
 }
 
 div.header__navigate ul.header__navigate__row-1 li a {
-    text-decoration: none;
-    color: #262626;
-    font-size: 14pt;
-    font-family: 'MyriadPro-Light';
+  text-decoration: none;
+  color: #262626;
+  font-size: 14pt;
+  font-family: 'MyriadPro-Light';
 }
 
 /*Hieu ung cho li*/
