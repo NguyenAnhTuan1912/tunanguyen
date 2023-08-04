@@ -1,9 +1,11 @@
+import { Header } from "../../components/header/index.js";
+import { SocialMedia } from "../../components/social_media/index.js";
+
+import { HTML } from "./html.js";
+
 import { Utils } from "../../utils/index.js";
 import { Animation } from "../../animations/index.js";
 
-import { Header } from "../../components/header/index.js";
-
-import { HTML } from "./html.js";
 
 export class Home {
   /**
@@ -23,7 +25,7 @@ export class Home {
       const introductionText = _main.querySelector("#aw1__text");
       const text2 = _main.querySelector("#aw1__text-2");
       const bodyPart2Text = _main.querySelector(".body__part-2__content .body__part-2__container__text .body__part-2__text");
-      const bodyPart3Text = _main.querySelector(".body__part-3__content .body__part-3__container__text .body__part-3__text");
+      const bodyPart4Text = _main.querySelector(".body__part-4__content .body__part-4__container__text .body__part-4__text");
       const planetsAroundCV = _main.querySelector("#planetsAroundCV");
 
       let introductionTextAlternate = "The Ancient Temple";
@@ -74,7 +76,7 @@ export class Home {
       );
 
       Animation.Text.showContinously(
-        bodyPart3Text,
+        bodyPart4Text,
         [
           "The Universe began over 13 billion years ago, It's finite or infinite, no one knows..",
           "Solar System appeared over 4 billion years ago,<br> include our earth and planets orbit the sun.",
@@ -85,7 +87,7 @@ export class Home {
         { canUseInnerHTML: true, intervalTime: 10000 }
       );
 
-      Animation.Canvas.ballFly(planetsAroundCV);
+      // Animation.Canvas.ballFly(planetsAroundCV);
 
       // Add animation to run later.
       Home.animationCallBacks.push(() => Animation.Text.replace(introductionText, introductionTextAlternate));
@@ -95,10 +97,6 @@ export class Home {
 
     IndexDots() {
       return Utils.Element.toElement(HTML.IndexDots);
-    },
-
-    SocialMedia() {
-      return Utils.Element.toElement(HTML.SocialMedia);
     },
 
     Footer() {
@@ -113,7 +111,7 @@ export class Home {
         Header(),
         Home.components.Body(),
         Home.components.IndexDots(),
-        Home.components.SocialMedia(),
+        SocialMedia(),
         Home.components.Footer()
       );
 
@@ -122,41 +120,50 @@ export class Home {
         animationCallBack();
       }
 
-      let dot = document.getElementsByClassName("indexdot__containner__dot");
+      let dots = document.getElementsByClassName("indexdot__containner__dot");
       let pageName = document.getElementsByClassName("footer__text__container__name");
-      const sy = window.innerHeight;
+      let sy = window.innerHeight;
 
       function dotActive(n) {
-        for(let i = 0; i < dot.length; i++) {
-          dot[i].className = dot[i].className.replace(" dot--active", "");
+        for(let i = 0; i < dots.length; i++) {
+          dots[i].className = dots[i].className.replace(" dot--active", "");
         }
-        dot[n].className += " dot--active";
+        dots[n].className += " dot--active";
       }
 
+      function run(y) {
+        if(y >= 0 && y < sy) {
+          dotActive(0);
+          pageName[0].innerHTML = "The Ancient Temple";
+        }
+        if(y >= sy && y < sy * 2) {
+          dotActive(1);
+          pageName[0].innerHTML = "About me";
+        }
+        if(y >= sy * 2 && y < sy * 3) {
+          dotActive(2);
+          pageName[0].innerHTML = "Skills";
+        }
+        if(y >= sy * 3) {
+          dotActive(3);
+          pageName[0].innerHTML = "The Strange Planet";
+        }
+      }
+
+      run(window.scrollY);
+
       $(document).ready(function() {
-        dotActive(0);
         pageName[0].innerHTML = "The Ancient Temple";
-        $(window).on('scroll', function(event) {
-          if(window.scrollY >= 0 && window.scrollY < sy) {
-              dotActive(0);
-              pageName[0].innerHTML = "The Ancient Temple";
-          }
-          if(window.scrollY >= sy && window.scrollY < sy * 2) {
-              dotActive(1);
-              pageName[0].innerHTML = "About me";
-          }
-          if(window.scrollY >= sy * 2) {
-              dotActive(2);
-              pageName[0].innerHTML = "The Strange Planet";
-          }
+        $(window).on('scroll', function(e) {
+          run(window.scrollY);
         });
 
-        $(".indexdot__containner__dot").on('click', function(event) {
+        $(".indexdot__containner__dot").on('click', function(e) {
           let nameID = "#body_" + this.value;
           $('html, body').animate({
-              scrollTop: $(nameID).offset().top
+            scrollTop: $(nameID).offset().top
           }, 800, function(){
-              nameID = "";
+            nameID = "";
           });
         });
       });

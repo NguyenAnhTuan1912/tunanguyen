@@ -1,7 +1,7 @@
 export const HTML = {
   Body: `
   <div class="body">
-    <div class="body__part-1" id="body_1">
+    <div class="body__part body__part-1" id="body_1">
       <div class="body__part-1__midground" style="display: flex; align-items: center;">
         <div class="body__part-1__midground__artwork">
           <img src="image/svg/temple_body-01.svg" alt="" class="artwork-svg" style="position: absolute;">
@@ -32,7 +32,7 @@ export const HTML = {
       </div>
       <div class="body__part-1__content">
         <div class="body__part-1__container__text">
-          <p class="body__part-1__text" id="aw1__text">1%s )a=@#bd u1$%1g</p>
+          <p class="body__part-1__text fw-bold" id="aw1__text">1%s )a=@#bd u1$%1g</p>
           <p class="body__part-1__text" id="aw1__text-2">No one knows about its existence,<br>maybe It's older than the world.</p>
         </div>
         <div class="body__part-1__content__toggle__button">
@@ -42,10 +42,11 @@ export const HTML = {
         </div>
       </div>
     </div>
-    <div class="body__part-2" id="body_2">
+
+    <div class="body__part body__part-2" id="body_2">
       <div class="body__part-2__content-mid">
         <div class="body__part-2__container__text-mid">
-          <p class="body__part-2__text-mid">TUNA NGUYEN</p>
+          <p class="body__part-2__text-mid fw-bold">TUNA NGUYEN</p>
         </div>
       </div>
       <div class="body__part-2__midground" style="display: flex; align-items: center;">
@@ -55,40 +56,75 @@ export const HTML = {
           <img src="image/svg/R_eye-01.svg" alt="" class="artwork-2-svg" style="position: absolute;">
         </div>
       </div>
-        <div class="body__part-2__content">
-          <div class="body__part-2__container__text">
-            <p class="body__part-2__text"></p>
+      <div class="body__part-2__content">
+        <div class="body__part-2__container__text">
+          <p class="body__part-2__text"></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="body__part body__part-3" id="body_3">
+      <div class="body__part-3__content">
+        <p class="body__part-3__title fw-bold">My skills</p>
+        <div>
+          <p>Currently, I work as Front-end developer and I am improving my skills, knowledge to go further in this field.</p>
+          <p>You can view more about me and my work in my <span class="fw-bold"><a class="txt-clr-warning" href="project.html">project</a></span></p>
+          <div class="mt-1">
+            <p class="fw-bold">Languages:</p>
+            <ul>
+              <li>Javascript</li>
+              <li>Typescript</li>
+            </ul>
+          </div>
+
+          <div class="mt-1">
+            <p class="fw-bold">Libraries/Frameworks:</p>
+            <ul>
+              <li>React</li>
+              <li>Express</li>
+              <li>ASP.NET</li>
+            </ul>
+          </div>
+
+          <div class="mt-1">
+            <p class="fw-bold">Tools:</p>
+            <ul>
+              <li>Visual Studio Code</li>
+              <li>Git</li>
+            </ul>
           </div>
         </div>
       </div>
-      <div class="body__part-3" id="body_3">
-        <div class="body__part-3__midground" style="display: flex; align-items: center;">
-          <div class="body__part-3__midground__artwork">
-            <video autoplay="autoplay" loop="loop" muted defaultMuted playsinline  oncontextmenu="return false;"  preload="auto" style="pointer-events: none; position: absolute;">
-              <source src="https://res.cloudinary.com/dhqgfphiy/video/upload/v1690968932/portfolio/video/WEB_ARTWORK_TWO_w7rzrv.mp4" type="video/mp4">
-            </video>
-            <canvas class="body__part-3__midground__artwork__planets" id="planetsAroundCV"></canvas>
+    </div>
 
-            <div class="artwork-3_effect" style="position: relative; display: flex; align-items: center; justify-content: center;">
-              <span class="dot--animate" style="position: absolute;"></span>
-              <span class="dot--animate" style="position: absolute;"></span>
-              <span class="dot--animate" style="position: absolute;"></span>
+    <div class="body__part body__part-4" id="body_4">
+      <div class="body__part-4__midground" style="display: flex; align-items: center;">
+        <div class="body__part-4__midground__artwork">
+          <video autoplay="autoplay" loop="loop" muted defaultMuted playsinline  oncontextmenu="return false;"  preload="auto" style="pointer-events: none; position: absolute;">
+            <source src="https://res.cloudinary.com/dhqgfphiy/video/upload/v1690968932/portfolio/video/WEB_ARTWORK_TWO_w7rzrv.mp4" type="video/mp4">
+          </video>
+          <canvas class="body__part-4__midground__artwork__planets" id="planetsAroundCV"></canvas>
 
-              <div class="artwork-3_sparkling_bg" style="position: absolute;">
-                <img src="image/svg/sparkling star.svg" class="artwork-3_sparkling-element" value="1"></img>
-                <img src="image/svg/sparkling star.svg" class="artwork-3_sparkling-element" value="2"></img>
-                <img src="image/svg/sparkling star.svg" class="artwork-3_sparkling-element" value="3"></img>
-                <img src="image/svg/sparkling star.svg" class="artwork-3_sparkling-element" value="4"></img>
-                <img src="image/svg/sparkling star.svg" class="artwork-3_sparkling-element" value="5"></img>
-              </div>
+          <div class="artwork-3_effect" style="position: relative; display: flex; align-items: center; justify-content: center;">
+            <span class="dot--animate" style="position: absolute;"></span>
+            <span class="dot--animate" style="position: absolute;"></span>
+            <span class="dot--animate" style="position: absolute;"></span>
+
+            <div class="artwork-3_sparkling_bg" style="position: absolute;">
+              <img src="image/svg/sparkling star.svg" class="artwork-3_sparkling-element" value="1"></img>
+              <img src="image/svg/sparkling star.svg" class="artwork-3_sparkling-element" value="2"></img>
+              <img src="image/svg/sparkling star.svg" class="artwork-3_sparkling-element" value="3"></img>
+              <img src="image/svg/sparkling star.svg" class="artwork-3_sparkling-element" value="4"></img>
+              <img src="image/svg/sparkling star.svg" class="artwork-3_sparkling-element" value="5"></img>
             </div>
           </div>
         </div>
-        <div class="body__part-3__content">
-          <div class="body__part-3__container__text" style="position: absolute; visibility: visible;">
-            <p class="body__part-3__text" id="aw3__text-1" style="text-align: center; padding: 0 10px;"></p>
-          </div>
+      </div>
+      <div class="body__part-4__content">
+        <div class="body__part-4__container__text" style="position: absolute; visibility: visible;">
+          <p class="body__part-4__text" id="aw3__text-1" style="text-align: center; padding: 0 10px;"></p>
         </div>
+      </div>
     </div>
   </div>
   `,
@@ -99,25 +135,15 @@ export const HTML = {
             <li class="indexdot__containner__dot" value="1"></li>
             <li class="indexdot__containner__dot" value="2"></li>
             <li class="indexdot__containner__dot" value="3"></li>
+            <li class="indexdot__containner__dot" value="4"></li>
         </ul>
-    </div>
-  </div>
-  `,
-  SocialMedia: `
-  <div class="socialmedia">
-    <div class="socialmedia__containner">
-      <ul>
-        <li class="socialmedia__containner__dot"><a href="https://www.facebook.com/tunanguyen19" class="fa fa-facebook"></a></li>
-        <li class="socialmedia__containner__dot"><a href="https://www.instagram.com/tunangu.yen" class="fa fa-instagram"></a></li>
-        <li class="socialmedia__containner__dot"><a href="https://www.behance.net/tngnguyn55" class="fa fa-behance"></a></li>
-      </ul>
     </div>
   </div>
   `,
   Footer: `
   <div class="footer">
     <div class="footer__name">
-      <div class="footer__name__container"><p class="footer__name__container__name">Nguyen Anh Tuan - Archive</p></div>
+      <div class="footer__name__container"><p class="footer__name__container__name">Nguyen Anh Tuan</p></div>
     </div>
     <div class="footer__information-output"></div>
     <div class="footer__text">
