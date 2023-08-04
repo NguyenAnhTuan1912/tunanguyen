@@ -1,7 +1,7 @@
 /*
 Hieu ung cho dinh ngoi den
 */
-.body__part-3 .body__part-3__midground .body__part-3__midground__artwork .artwork-3_effect .dot--animate:nth-child(1) {
+.body__part-4 .body__part-4__midground .body__part-4__midground__artwork .artwork-3_effect .dot--animate:nth-child(1) {
     width: 8%;
     height: 8vw;
     border-radius: 50%;
@@ -18,7 +18,7 @@ Hieu ung cho dinh ngoi den
     left: 10%;
 }
 
-.body__part-3 .body__part-3__midground .body__part-3__midground__artwork .artwork-3_effect .dot--animate:nth-child(2) {
+.body__part-4 .body__part-4__midground .body__part-4__midground__artwork .artwork-3_effect .dot--animate:nth-child(2) {
     width: 10%;
     height: 10vw;
     border-radius: 50%;
@@ -35,7 +35,7 @@ Hieu ung cho dinh ngoi den
     left: 30%;
 }
 
-.body__part-3 .body__part-3__midground .body__part-3__midground__artwork .artwork-3_effect .dot--animate:nth-child(3) {
+.body__part-4 .body__part-4__midground .body__part-4__midground__artwork .artwork-3_effect .dot--animate:nth-child(3) {
     width: 12%;
     height: 12vw;
     border-radius: 50%;
@@ -74,7 +74,7 @@ Hieu ung cho dinh ngoi den
 /*
 Hieu ung Sparkling temple
 */
-.body__part-3 .body__part-3__midground .body__part-3__midground__artwork .artwork-3_effect .artwork-3_sparkling_bg .artwork-3_sparkling-element {
+.body__part-4 .body__part-4__midground .body__part-4__midground__artwork .artwork-3_effect .artwork-3_sparkling_bg .artwork-3_sparkling-element {
     position: absolute;
     width: 120px;
     -o-animation: sparkling 2s ease-in-out infinite;
@@ -83,7 +83,7 @@ Hieu ung Sparkling temple
     animation: sparkling 2s ease-in-out infinite;
 }
 
-.body__part-3 .body__part-3__midground .body__part-3__midground__artwork .artwork-3_effect .artwork-3_sparkling_bg .artwork-3_sparkling-element:nth-child(2) {
+.body__part-4 .body__part-4__midground .body__part-4__midground__artwork .artwork-3_effect .artwork-3_sparkling_bg .artwork-3_sparkling-element:nth-child(2) {
     width: 120px;
     top: 70%;
     left: 25%;
@@ -93,7 +93,7 @@ Hieu ung Sparkling temple
     animation-delay: 1.7s;
 }
 
-.body__part-3 .body__part-3__midground .body__part-3__midground__artwork .artwork-3_effect .artwork-3_sparkling_bg .artwork-3_sparkling-element:nth-child(4) {
+.body__part-4 .body__part-4__midground .body__part-4__midground__artwork .artwork-3_effect .artwork-3_sparkling_bg .artwork-3_sparkling-element:nth-child(4) {
     width: 80px;
     top: 60%;
     left: 70%;
@@ -103,7 +103,7 @@ Hieu ung Sparkling temple
     animation-delay: 1.5s;
 }
 
-.body__part-3 .body__part-3__midground .body__part-3__midground__artwork .artwork-3_effect .artwork-3_sparkling_bg .artwork-3_sparkling-element:nth-child(3) {
+.body__part-4 .body__part-4__midground .body__part-4__midground__artwork .artwork-3_effect .artwork-3_sparkling_bg .artwork-3_sparkling-element:nth-child(3) {
     width: 100px;
     top: 39%;
     left: 42%;
@@ -114,7 +114,7 @@ Hieu ung Sparkling temple
 }
 
 
-.body__part-3 .body__part-3__midground .body__part-3__midground__artwork .artwork-3_effect .artwork-3_sparkling_bg .artwork-3_sparkling-element:nth-child(5) {
+.body__part-4 .body__part-4__midground .body__part-4__midground__artwork .artwork-3_effect .artwork-3_sparkling_bg .artwork-3_sparkling-element:nth-child(5) {
     width: 80px;
     top: 20%;
     left: 78%;
@@ -124,7 +124,7 @@ Hieu ung Sparkling temple
     animation-delay: 1.2s;
 }
 
-.body__part-3 .body__part-3__midground .body__part-3__midground__artwork .artwork-3_effect .artwork-3_sparkling_bg .artwork-3_sparkling-element:nth-child(1) {
+.body__part-4 .body__part-4__midground .body__part-4__midground__artwork .artwork-3_effect .artwork-3_sparkling_bg .artwork-3_sparkling-element:nth-child(1) {
     width: 120px;
     top: 20%;
     left: 15%;

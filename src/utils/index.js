@@ -63,32 +63,43 @@ export class Utils {
       let that = Utils.Other;
 
       for(let i = 0; i < N; i++) {
+        let range = `[${points[i - 1] + 1},${points[i]}]`;
         let mediaBP = that.createMediaBreakPoint(points[i - 1], points[i]);
         let mediaQueryList = window.matchMedia(mediaBP);
-        let range = `[${points[i - 1] + 1},${points[i]}]`;
 
         if(i === 0) {
           range = `[,${points[i]}]`;
           mediaBP = that.createMediaBreakPoint(points[i], undefined, {canQueryWithMax: true});
           mediaQueryList = window.matchMedia(mediaBP);
-        }
-
-        if(i === N - 1 && N > 1) {
-          range = `[${points[i]},]`;
-          mediaBP = that.createMediaBreakPoint(points[i], undefined);
-          mediaQueryList = window.matchMedia(mediaBP);
-        }
-
-        const listener = function(e) {
-          if(mediaQueryList.matches) cb(range);
         };
 
-        listener();
+        let listener = function(e) {
+          if(mediaQueryList.matches) cb(range);
+        };
 
         mediaQueryList.addEventListener("change", listener);
 
         mqls.push(mediaQueryList);
         mqlListeners.push(listener);
+
+        listener();
+
+        if(i === N - 1) {
+          let range = `[${points[i]},]`;
+          let mediaBP = that.createMediaBreakPoint(points[i] + 1, undefined);
+          let mediaQueryList = window.matchMedia(mediaBP);
+
+          listener = function(e) {
+            if(mediaQueryList.matches) cb(range);
+          };
+          
+          mediaQueryList.addEventListener("change", listener);
+          
+          mqls.push(mediaQueryList);
+          mqlListeners.push(listener);
+
+          listener();
+        }
       }
 
       return function() {

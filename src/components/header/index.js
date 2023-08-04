@@ -6,19 +6,13 @@ const html = `
       <div class="header__logo__container"><img src="image/logo/logo.svg" alt="" class="header__logo-svg" id="logo"></div>
     </div>
     <div class="header__name">
-      <div class="header__name__container"><p>tunanguyen</p></div>
+      <div class="header__name__container"><a href="index.html"><p>tunanguyen</p></a></div>
     </div>
     <div class="header__navigate">
       <div class="header__navigate__container">
         <ul class="header__navigate__row-1">
           <li class="header__navigate__row-1__col">
-            <a href="project.html">Project</a>
-          </li>
-          <li class="header__navigate__row-1__col">
-            <a href="portfolio.html">Portfolio</a>
-          </li>
-          <li class="header__navigate__row-1__col">
-            <a href="contact.html">Contact</a>
+            <a target="_blank" href="project.html" class="txt-clr-warning">project</a>
           </li>
         </ul>
       </div>
@@ -53,10 +47,21 @@ export function Header() {
     listTransition
   );
 
-  Utils.Other.responsive([600], () => {
-    menu[0].className += " navigate--flex";
-    logo[0].onclick = function(event) {
-      toggleListAnimate();
+  let handleLogoClick = function(e) {
+    toggleListAnimate();
+  };
+
+  Utils.Other.responsive([600, 1920], (range) => {
+    console.log("Match range: ", range);
+
+    if(range === "[,600]") {
+      menu[0].className += " navigate--flex";
+      logo[0].addEventListener("click", handleLogoClick);
+    }
+    
+    if(range === "[601,1920]") {
+      console.log("Remove click event");
+      logo[0].removeEventListener("click", handleLogoClick);
     }
   });
 
