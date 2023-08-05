@@ -73,6 +73,22 @@
   font-weight: 900;
 }
 
+.txt-center {
+  text-align: center;
+}
+
+.txt-left {
+  text-align: left;
+}
+
+.txt-right {
+  text-align: right;
+}
+
+.txt-justify {
+  text-align: justify;
+}
+
 .txt-clr-primary {
   color: var(--clr-primary)
 }

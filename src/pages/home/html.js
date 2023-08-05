@@ -64,11 +64,11 @@ export const HTML = {
     </div>
 
     <div class="body__part body__part-3" id="body_3">
-      <div class="body__part-3__content">
+      <div class="body__part-3__content p-1">
         <p class="body__part-3__title fw-bold">My skills</p>
         <div>
           <p>Currently, I work as Front-end developer and I am improving my skills, knowledge to go further in this field.</p>
-          <p>You can view more about me and my work in my <span class="fw-bold"><a class="txt-clr-warning" href="project.html">project</a></span></p>
+          <p>You can view more about my works in <span class="fw-bold"><a class="txt-clr-warning" target="_blank" href="project.html">projects</a></span></p>
           <div class="mt-1">
             <p class="fw-bold">Languages:</p>
             <ul>

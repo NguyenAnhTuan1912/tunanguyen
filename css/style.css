@@ -71,7 +71,41 @@ div.socialmedia__containner {
   color: var(--clr-onBackground);
 }
 
+h1 {
+  font-size: 2.125rem;
+}
+
+h2 {
+  font-size: 1.875rem;
+}
+
+h3 {
+  font-size: 1.5;
+}
+
+h4 {
+  font-size: 1.25rem;
+}
+
+h5 {
+  font-size: 1.125rem;
+}
+
+h6 {
+  font-size: 1rem;
+}
+
+@media only screen and (max-width: 1440px) {
+  * {
+    font-size: 14.25px;
+  }
+}
+
 @media only screen and (max-width: 600px) {
+  * {
+    font-size: 12px;
+  }
+
   .socialmedia__containner a {
     margin-left: 10px;
   }
