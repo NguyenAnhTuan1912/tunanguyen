@@ -4,15 +4,14 @@
     align-items: center;
     justify-content: flex-start;
     top: 83%;
+    padding: 0;
   }
 
   .body__part-1  .body__part-1__content .body__part-1__container__text .body__part-1__text:nth-child(1) {
-    font-size: 16pt;
     text-align: center;
   }
   
   .body__part-1  .body__part-1__content .body__part-1__container__text .body__part-1__text:nth-child(2) {
-    font-size: 12pt;
     text-align: center;
   }
 
@@ -23,11 +22,6 @@
     align-items: center;
     margin-top: 10px;
     text-align: center;
-  }   
-
-  .body__part-1 .body__part-1__content .body__part-1__content__toggle__button .body__part-1__content__button, 
-  .body__part-1 .body__part-1__content .body__part-1__content__toggle__button .body__part-1__content__slash {
-    font-size: 12pt;
   }
 
 
@@ -42,7 +36,6 @@
 
 
   .body__part-2 .body__part-2__content .body__part-2__container__text .body__part-2__text {
-    font-size: 12pt;
     text-align: center;
   }
 }
@@ -68,7 +61,6 @@
 
   div.footer__name__container p, div.footer__text__container p {
     line-height: 30px;
-    font-size: 10pt;
   }
 
   div.footer, div.footer__name, div.footer__text {
@@ -107,20 +99,8 @@
     top: calc(52.3562% + 50vw);
   }
 
-  .body__part-1  .body__part-1__content .body__part-1__container__text .body__part-1__text:nth-child(1) {
-    font-size: 3.5vw;
-  }
-  
-  .body__part-1  .body__part-1__content .body__part-1__container__text .body__part-1__text:nth-child(2) {
-    font-size: 2.6vw;
-  }
   .body__part-1 .body__part-1__content .body__part-1__content__toggle__button {
     margin-top: 1.66666667vw;
-  }
-
-  .body__part-1 .body__part-1__content .body__part-1__content__toggle__button .body__part-1__content__button, 
-  .body__part-1 .body__part-1__content .body__part-1__content__toggle__button .body__part-1__content__slash {
-    font-size: 2.6vw;
   }
 
   @keyframes tail {
@@ -242,11 +222,6 @@
     top: calc(52.3562% + 50vw);
   }
 
-  .body__part-2  .body__part-2__content .body__part-2__container__text .body__part-2__text {
-    font-size: 2.6vw;
-  }
-
-
   /*
       Body 3
   */
@@ -298,10 +273,6 @@
     top: 70% + 10vw;
   }
 
-  .body__part-4  .body__part-4__content .body__part-4__container__text .body__part-4__text {
-    font-size: 2.6vw;
-  }
-
   @keyframes sparkling {
     0% {
       -o-transform: scale(0.3);
@@ -326,7 +297,6 @@
   }
 
   div.socialmedia__containner ul li a {
-    font-size: 12pt;
     margin-left: 10px;
   }
 

@@ -6,13 +6,16 @@ const html = `
       <div class="header__logo__container"><img src="image/logo/logo.svg" alt="" class="header__logo-svg" id="logo"></div>
     </div>
     <div class="header__name">
-      <div class="header__name__container"><a href="index.html"><p>tunanguyen</p></a></div>
+      <div class="header__name__container"><a href="/"><p>tunanguyen</p></a></div>
     </div>
     <div class="header__navigate">
       <div class="header__navigate__container">
         <ul class="header__navigate__row-1">
-          <li class="header__navigate__row-1__col">
-            <a target="_blank" href="project.html" class="txt-clr-warning">project</a>
+          <li class="header__navigate__row-1__col px-1">
+            <a target="_blank" href="project.html" class="txt-clr-onBackground">Projects</a>
+          </li>
+          <li class="header__navigate__row-1__col px-1">
+            <a target="_blank" href="mycv.html" class="txt-clr-onBackground">My CV</a>
           </li>
         </ul>
       </div>
