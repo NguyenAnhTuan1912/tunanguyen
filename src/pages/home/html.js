@@ -68,7 +68,7 @@ export const HTML = {
         <p class="body__part-3__title fw-bold">My skills</p>
         <div>
           <p>Currently, I work as Front-end developer and I am improving my skills, knowledge to go further in this field.</p>
-          <p>You can view more about my works in <span class="fw-bold"><a class="txt-clr-warning" target="_blank" href="project.html">projects</a></span></p>
+          <p>You can view more about my works in <span class="fw-bold"><a class="txt-clr-warning" target="_blank" href="work.html">Work</a></span></p>
           <div class="mt-1">
             <p class="fw-bold">Languages:</p>
             <ul>

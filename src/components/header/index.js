@@ -12,7 +12,7 @@ const html = `
       <div class="header__navigate__container">
         <ul class="header__navigate__row-1">
           <li class="header__navigate__row-1__col px-1">
-            <a target="_blank" href="project.html" class="txt-clr-onBackground">Projects</a>
+            <a target="_blank" href="work.html" class="txt-clr-onBackground">Work</a>
           </li>
           <li class="header__navigate__row-1__col px-1">
             <a target="_blank" href="mycv.html" class="txt-clr-onBackground">My CV</a>
@@ -55,15 +55,12 @@ export function Header() {
   };
 
   Utils.Other.responsive([600, 1920], (range) => {
-    console.log("Match range: ", range);
-
     if(range === "[,600]") {
       menu[0].className += " navigate--flex";
       logo[0].addEventListener("click", handleLogoClick);
     }
     
     if(range === "[601,1920]") {
-      console.log("Remove click event");
       logo[0].removeEventListener("click", handleLogoClick);
     }
   });
