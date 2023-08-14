@@ -61,6 +61,7 @@ export function WorkDetailsDialog(close, item, utils) {
       </div>
       <div class="work-details-images mb-4">
         <h2>Images</h2>
+        <p>index/total</p>
       </div>
       <div>
         <h2>Description</h2>
