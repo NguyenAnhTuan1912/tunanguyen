@@ -8,6 +8,12 @@
  */
 
 export class Utils {
+  static Assets = {
+    DriveFileNames: {
+      CV_ENG: "END-[CV] NGUYEN ANH TUAN.pdf"
+    }
+  }
+
   static Element = {
     /**
      * Phương thức này sẽ chuyển chuỗi html sang một element.

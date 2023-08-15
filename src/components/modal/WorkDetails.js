@@ -29,6 +29,9 @@ export function WorkDetailsDialog(close, item, utils) {
    * @type {WorkProps}
    */
   let data = item.getData();
+  let [githubLink, npmLink, ...otherLinks] = data.links;
+  otherLinks = otherLinks.map(link => link.split("::"));
+
   let container = Utils
     .Element
     .createElement("div", {
@@ -58,10 +61,17 @@ export function WorkDetailsDialog(close, item, utils) {
           <p><strong>Type:</strong> <span class="txt-clr-error">${data.type}</span></p>
           <p><strong>Tags:</strong> ${data.tags}</p>
         </div>
+        <div class="mt-1">
+          <h2>Links</h2>
+          <p><strong>Github:</strong> ${githubLink ? `<a href="${githubLink}" target="_blank">${githubLink}</a>` : "Not yet"}</p>
+          <p><strong>NPM:</strong> ${npmLink ? `<a href="${npmLink}" target="_blank">${npmLink}</a>` : "Not yet"}</p>
+        </div>
+        <div class="mt-1" id="linksContainer">
+          <h2>Other links</h2>
+        </div>
       </div>
       <div class="work-details-images mb-4">
         <h2>Images</h2>
-        <p>index/total</p>
       </div>
       <div>
         <h2>Description</h2>
@@ -72,6 +82,16 @@ export function WorkDetailsDialog(close, item, utils) {
   });
   let workDetailsImages = body.querySelector(".work-details-images");
   let imageElements = [Utils.Element.toElement(`<img src="${data.avtLink}" class="work-details-image" />`)];
+  let linksContainer = body.querySelector("#linksContainer");
+
+  otherLinks.forEach(link => {
+    if(link[1]) 
+      linksContainer
+      .appendChild(
+        Utils.Element.toElement(
+          `<p><strong>${link[0]}:</strong> <a href="${link[1]}" target="_blank">${link[1] ? link[1] : "Not yet"}</a></p>`
+        ));
+  });
 
   for(let imgLink of data.imgLinks) {
     let imageElement = Utils.Element.toElement(`<img src="${imgLink}" class="work-details-image" />`);

@@ -1,5 +1,6 @@
 import { Header } from "../../components/header/index.js";
 import { SocialMedia } from "../../components/social_media/index.js";
+import { PreviewPDF } from "../../components/preview_pdf/PreviewPdf.js";
 
 import { OtherCallers } from "../../apis/others/index.js";
 
@@ -17,7 +18,15 @@ export class MyCV {
 
   static components = {
     Body: function() {
-      return Utils.Element.toElement(html.Body);
+      let _main = Utils.Element.toElement(html.Body);
+      OtherCallers.getDriveFilesInforAsync(Utils.Assets.DriveFileNames.CV_ENG)
+      .then(payload => {
+        let data = payload.data;
+        let id = data.fileId;
+        _main.innerHTML = "";
+        _main.append(PreviewPDF(id));
+      });
+      return _main;
     }
   };
 
@@ -27,7 +36,6 @@ export class MyCV {
       MyCV.Container = document.getElementById("root");
       MyCV.Container.append(
         Header(),
-        SocialMedia(),
         MyCV.components.Body()
       );
     });

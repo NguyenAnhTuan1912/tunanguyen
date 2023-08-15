@@ -1,7 +1,9 @@
 import { APIUtils } from "../utils/index.js";
 
+import { Utils } from "../../utils/index.js";
+
 /**
- * Use this function to ping to the host.
+ * Dùng function này để PING tới server.
  * @returns 
  */
 async function PING(isDev = true) {
@@ -9,9 +11,22 @@ async function PING(isDev = true) {
   return fetch(url).then(res => res.json());
 }
 
+let KnownDriveFolder = Utils.Assets.KnownDriveFolder;
+
+/**
+ * Dùng để lấy thông tin files trong một folder nào đó.
+ * @param {string} name 
+ * @param {keyof KnownDriveFolder} knownDriveFolder 
+ */
+async function getDriveFilesInforAsync(name) {
+  let url = APIUtils.getBaseURL() + `/drive/saved/file?name=${name}`;
+  return fetch(url).then(res => res.json());
+}
+
 /**
  * Some others callers
  */
 export const OtherCallers = {
-  PING
+  PING,
+  getDriveFilesInforAsync
 };

@@ -1,6 +1,13 @@
 import { createModal } from "https://unpkg.com/tunangn-html-modal@1.6.3/dist/index.js";
 import { workDetailsName, WorkDetailsDialog } from "./WorkDetails.js";
 
+function disableScroll() {
+  document.body.style.overflow = "hidden";
+}
+function enableScroll() {
+  document.body.style.overflow = "auto";
+}
+
 const open = createModal({
   items: [
     {
@@ -12,5 +19,8 @@ const open = createModal({
 });
 
 export async function openWorkDetailsDialog(data) {
-  return open(workDetailsName, data);
+  disableScroll();
+  let result = await open(workDetailsName, data);
+  enableScroll();
+  return result;
 }

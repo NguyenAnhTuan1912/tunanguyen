@@ -50,7 +50,7 @@ const createTranslateXFn = function(element) {
     // Trừ đi một slide ảo, trừ luôn 1 nữa mới về đúng index thật (zero-based).
     if(!maxIndex) maxIndex = (Math.abs(_b) / w) - 2;
 
-    // console.log("X: ", X);
+    console.log("X: ", X);
     // console.log("Boundary: ", _b);
     // console.log("Current index: ", Math.abs(_b) / Math.abs(X));
 
@@ -128,10 +128,12 @@ export function Slider(elements) {
   let translateX = createTranslateXFn(slidesElement);
 
   prevBtn.addEventListener("click", () => { 
+    console.log("Slide's width: ", _main.offsetWidth);
     let currentIndex = translateX(_main.offsetWidth, _main.offsetWidth * (totalElement + 2), 1);
     currentSlideSpan.textContent = currentIndex + 1;
   });
   nextBtn.addEventListener("click", () => {
+    console.log("Slide's width: ", _main.offsetWidth);
     let currentIndex = translateX(_main.offsetWidth, _main.offsetWidth * (totalElement + 2), -1);
     currentSlideSpan.textContent = currentIndex + 1;
   });

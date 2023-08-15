@@ -67,6 +67,10 @@ div.socialmedia__containner {
   transform: translateY(-50%);
 }
 
+.tunangn-modal {
+  z-index: 10;
+}
+
 .socialmedia__containner a {
   cursor: pointer;
   margin: 10px 0;
