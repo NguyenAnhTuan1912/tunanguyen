@@ -1,7 +1,9 @@
 {
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rimraf dist && rollup -c --bundleConfigAsCjs"
+    "build": "rimraf dist && rollup -c --bundleConfigAsCjs",
+    "prepush": "npm run build",
+    "push": "git push origin deploy_cloudflare"
   },
   "dependencies": {
     "@rollup/plugin-commonjs": "^25.0.3",
