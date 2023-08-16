@@ -6,8 +6,8 @@ import { Utils } from "../../utils/index.js";
  * Dùng function này để PING tới server.
  * @returns 
  */
-async function PING(isDev = true) {
-  let url = isDev ? "http://localhost:3000" : "";
+async function PING(isDev = false) {
+  let url = APIUtils.getBaseURL(isDev, false);
   return fetch(url).then(res => res.json());
 }
 
