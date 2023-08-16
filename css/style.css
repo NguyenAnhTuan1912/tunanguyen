@@ -1,6 +1,10 @@
+@import url("./variables.css");
+@import url("./modal.css");
 @import url("./spacing.css");
 @import url("./typography.css");
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+@import url("./buttons.css");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200");
 
 * {
   margin: 0;
@@ -63,6 +67,10 @@ div.socialmedia__containner {
   transform: translateY(-50%);
 }
 
+.tunangn-modal {
+  z-index: 10;
+}
+
 .socialmedia__containner a {
   cursor: pointer;
   margin: 10px 0;
@@ -72,27 +80,27 @@ div.socialmedia__containner {
 }
 
 h1 {
-  font-size: 2.125rem;
+  font-size: 2rem;
 }
 
 h2 {
-  font-size: 1.875rem;
+  font-size: 1.5rem;
 }
 
 h3 {
-  font-size: 1.5;
+  font-size: 1.3rem;
 }
 
 h4 {
-  font-size: 1.25rem;
+  font-size: 1rem;
 }
 
 h5 {
-  font-size: 1.125rem;
+  font-size: .8rem;
 }
 
 h6 {
-  font-size: 1rem;
+  font-size: .7rem;
 }
 
 @media only screen and (max-width: 1440px) {

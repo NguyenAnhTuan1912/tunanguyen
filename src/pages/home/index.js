@@ -1,11 +1,42 @@
 import { Header } from "../../components/header/index.js";
 import { SocialMedia } from "../../components/social_media/index.js";
+import { Loading } from "../../components/loading/Loading.js";
+
+import { OtherCallers } from "../../apis/others/index.js";
 
 import { HTML } from "./html.js";
 
 import { Utils } from "../../utils/index.js";
 import { Animation } from "../../animations/index.js";
 
+/**
+ * Dùng để tạo một list có hoặc không có title.
+ * @param {{name: string, values: Array<string>}} data
+ * @param {{isBullet: boolean} | undefined} options
+ */
+function createList(data, options) {
+  if(!options) options = { isBullet: true };
+  else options = Object.assign({ isBullet: true }, options);
+
+  let container = Utils.Element.createElement("div", {
+    className: "mt-1",
+    content: `<p class="fw-bold">${data.name}</p>`
+  });
+  let listHTML = `<ul></ul>`;
+  let list;
+
+  if(!options.isBullet) listHTML = `<ol></ol>`;
+
+  list = Utils.Element.toElement(listHTML);
+
+  for(let value of data.values) {
+    list.append(Utils.Element.toElement(`<li>${value}</li>`));
+  }
+
+  container.append(list);
+
+  return container;
+}
 
 export class Home {
   /**
@@ -26,7 +57,7 @@ export class Home {
       const text2 = _main.querySelector("#aw1__text-2");
       const bodyPart2Text = _main.querySelector(".body__part-2__content .body__part-2__container__text .body__part-2__text");
       const bodyPart4Text = _main.querySelector(".body__part-4__content .body__part-4__container__text .body__part-4__text");
-      const planetsAroundCV = _main.querySelector("#planetsAroundCV");
+      const skillsContainer = _main.querySelector("#skillsContainer");
 
       let introductionTextAlternate = "The Ancient Temple";
       
@@ -63,34 +94,43 @@ export class Home {
         toggleAnimation();
       });
 
-      // Run animation.
-      Animation.Text.showContinously(
-        bodyPart2Text,
-        [
-          "I'm Anh Tuan,<br>I was born in the Year of the Horse.",
-          "I love designing & coding,<br>and I'm attracted by attractive things.",
-          "I place information<br>of my projects, works and CV on this site.",
-          "Contact me on my social medias<br>on the left of pages or above my head."
-        ],
-        { canUseInnerHTML: true, intervalTime: 10000 }
-      );
+      // Get skills
+      let promises = [
+        OtherCallers.getDriveFileInforAsync("skills.json"),
+        OtherCallers.getDriveFileInforAsync("homecontent.json")
+      ];
+      Promise.all(promises)
+      .then(payloads => {
+        let skillsPayload = payloads[0];
+        let contentPayload = payloads[1];
 
-      Animation.Text.showContinously(
-        bodyPart4Text,
-        [
-          "The Universe began over 13 billion years ago, It's finite or infinite, no one knows..",
-          "Solar System appeared over 4 billion years ago,<br> include our earth and planets orbit the sun.",
-          "Evidence of life on earth, microscopic organisms..., date from at least 3.5 billion years ago.",
-          "Does life exist outside of the earth? High Possibility.",
-          "4 billion years compare with the age of universe is small,<br> but many miraculous things occurred: our life, stars, planets...<br> I believe it. What about you?"
-        ],
-        { canUseInnerHTML: true, intervalTime: 10000 }
-      );
+        let { desc, skills } = skillsPayload.data;
+        let { part_1, part_2, part_4 } = contentPayload.data;
 
-      // Animation.Canvas.ballFly(planetsAroundCV);
+        skillsContainer.innerHTML = desc.html;
 
-      // Add animation to run later.
-      Home.animationCallBacks.push(() => Animation.Text.replace(introductionText, introductionTextAlternate));
+        for(let skill of skills) {
+          skillsContainer.append(createList(skill));
+        };
+
+        // Add content for HOME
+        text2.innerHTML = part_1.content.html;
+
+        // Run animation.
+        Animation.Text.showContinously(
+          bodyPart2Text,
+          part_2.content.html,
+          { canUseInnerHTML: true, intervalTime: 10000 }
+        );
+
+        Animation.Text.showContinously(
+          bodyPart4Text,
+          part_4.content.html,
+          { canUseInnerHTML: true, intervalTime: 10000 }
+        );
+
+        Animation.Text.replace(introductionText, part_1.title.text);
+      });
 
       return _main;
     },
@@ -106,64 +146,74 @@ export class Home {
 
   static render() {
     document.addEventListener("DOMContentLoaded", () => {
+      let [ element, interval ] = Loading();
       Home.Container = document.getElementById("root");
-      Home.Container.append(
-        Header(),
-        Home.components.Body(),
-        Home.components.IndexDots(),
-        SocialMedia(),
-        Home.components.Footer()
-      );
+      Home.Container.append(element);
 
-      // Run animation
-      for(let animationCallBack of Home.animationCallBacks) {
-        animationCallBack();
-      }
+      // PING SERVER FIRST!!!
+      OtherCallers.PING()
+      .then(() => {
+        Home.Container.innerHTML = "";
+        clearInterval(interval);
 
-      let dots = document.getElementsByClassName("indexdot__containner__dot");
-      let pageName = document.getElementsByClassName("footer__text__container__name");
-      let sy = window.innerHeight;
-
-      function dotActive(n) {
-        for(let i = 0; i < dots.length; i++) {
-          dots[i].className = dots[i].className.replace(" dot--active", "");
+        Home.Container.append(
+          Header(),
+          Home.components.Body(),
+          Home.components.IndexDots(),
+          SocialMedia(),
+          Home.components.Footer()
+        );
+  
+        // Run animation
+        for(let animationCallBack of Home.animationCallBacks) {
+          animationCallBack();
         }
-        dots[n].className += " dot--active";
-      }
-
-      function run(y) {
-        if(y >= 0 && y < sy) {
-          dotActive(0);
+  
+        let dots = document.getElementsByClassName("indexdot__containner__dot");
+        let pageName = document.getElementsByClassName("footer__text__container__name");
+        let sy = window.innerHeight;
+  
+        function dotActive(n) {
+          for(let i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" dot--active", "");
+          }
+          dots[n].className += " dot--active";
+        }
+  
+        function run(y) {
+          if(y >= 0 && y < sy) {
+            dotActive(0);
+            pageName[0].innerHTML = "The Ancient Temple";
+          }
+          if(y >= sy && y < sy * 2) {
+            dotActive(1);
+            pageName[0].innerHTML = "About me";
+          }
+          if(y >= sy * 2 && y < sy * 3) {
+            dotActive(2);
+            pageName[0].innerHTML = "Skills";
+          }
+          if(y >= sy * 3) {
+            dotActive(3);
+            pageName[0].innerHTML = "The Strange Planet";
+          }
+        }
+  
+        run(window.scrollY);
+  
+        $(document).ready(function() {
           pageName[0].innerHTML = "The Ancient Temple";
-        }
-        if(y >= sy && y < sy * 2) {
-          dotActive(1);
-          pageName[0].innerHTML = "About me";
-        }
-        if(y >= sy * 2 && y < sy * 3) {
-          dotActive(2);
-          pageName[0].innerHTML = "Skills";
-        }
-        if(y >= sy * 3) {
-          dotActive(3);
-          pageName[0].innerHTML = "The Strange Planet";
-        }
-      }
-
-      run(window.scrollY);
-
-      $(document).ready(function() {
-        pageName[0].innerHTML = "The Ancient Temple";
-        $(window).on('scroll', function(e) {
-          run(window.scrollY);
-        });
-
-        $(".indexdot__containner__dot").on('click', function(e) {
-          let nameID = "#body_" + this.value;
-          $('html, body').animate({
-            scrollTop: $(nameID).offset().top
-          }, 800, function(){
-            nameID = "";
+          $(window).on('scroll', function(e) {
+            run(window.scrollY);
+          });
+  
+          $(".indexdot__containner__dot").on('click', function(e) {
+            let nameID = "#body_" + this.value;
+            $('html, body').animate({
+              scrollTop: $(nameID).offset().top
+            }, 800, function(){
+              nameID = "";
+            });
           });
         });
       });

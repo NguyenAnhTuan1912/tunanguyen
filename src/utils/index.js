@@ -1,4 +1,19 @@
+/**
+ * @typedef CreateElementOptions
+ * @property {string | undefined} className
+ * @property {string | undefined} id
+ * @property {string | undefined} content
+ * @property {any} style
+ * @property {{[key in keyof HTMLElementEventMap]: (e: any) => void} | undefined} eventListeners
+ */
+
 export class Utils {
+  static Assets = {
+    DriveFileNames: {
+      CV_ENG: "END-[CV] NGUYEN ANH TUAN.pdf"
+    }
+  }
+
   static Element = {
     /**
      * Phương thức này sẽ chuyển chuỗi html sang một element.
@@ -7,14 +22,56 @@ export class Utils {
     toElement(html) {
       let div = document.createElement("div");
       div.innerHTML = html;
-
       return div.children[0];
+    },
+
+    /**
+     * Phương thức này dùng để build một HTMLElement
+     * @param {keyof HTMLElementTagNameMap} type
+     * @param {CreateElementOptions | undefined} options
+     */
+    createElement(type, options) {
+      let element = document.createElement(type);
+
+      if(options) {
+        if(options.className) element.classList.add(...options.className.split(" "));
+        if(options.id) element.id = options.id;
+        if(options.content) element.innerHTML = options.content;
+        if(options.style) {
+          let _style = options.style;
+          for(let key in _style) if(_style[key] !== undefined || _style[key] !== null) element.style[key] = _style[key];
+        };
+        if(options.eventListeners) {
+          let _listeners = options.eventListeners;
+          for(let key in _listeners)
+            element.addEventListener(key, _listeners[key]);
+        };
+      }
+
+      return element;
     }
   }
 
   static Number = {
+    /**
+     * Dùng để tạo một số bất kì từ `min` tới `max`
+     * @param {number} max 
+     * @param {number} min 
+     * @returns 
+     */
     getRandomNumber(max, min) {
       return Math.floor(Math.random() * (max - min + 1)) + min;
+    },
+
+    /**
+     * Dùng để làm tròn đến số thập phân thứ `dec` nào đó.
+     * @param {number} n 
+     * @param {number} dec 
+     * @returns 
+     */
+    round(n, dec) {
+      let _ = Math.pow(10, dec);
+      return Math.round(n * _) / _;
     }
   }
 
