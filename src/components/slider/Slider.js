@@ -30,11 +30,19 @@ let sliderButtonsStyle = {
  */
 const createTranslateXFn = function(element) {
   let last = undefined;
-  let index = 0;
-  let maxIndex = undefined;
+  // Bởi vì slide đầu tiên là clone của slide cuối và slide thứ 2 mới thật sự là bắt đầu của slide.
+  let index = 1;
+  // maxIndex
+  let maxSlidableIndex = undefined;
   let isSliding = false;
   let transitionTime = 400;
+  let percent = undefined;
+  let percentStart = undefined;
+  let percentEnd = undefined;
+  let maxSlidablePercent = undefined;
   let T = `${transitionTime / 1000}s ease-in-out`;
+
+  let dec = 8;
 
   /**
    * @param {number} w
@@ -42,51 +50,73 @@ const createTranslateXFn = function(element) {
    * @param {number} direction 
    */
   return function(w, boundary, direction = 1) {
-    if(!last) last = -w;
+    // Old
+    // if(!last) last = -w;
 
-    let X = last + (direction * w);
-    let _b = -(boundary - w);
+    // New
+    // boundary = length of slides
+    if(!percent) percent = Utils.Number.round(w / boundary * 100, dec);
+    if(!percentStart) percentStart = Utils.Number.round(w / boundary * 100 * -1, dec);
+    if(!percentEnd) percentEnd = Utils.Number.round((boundary - (w * 2)) / boundary * 100 * -1, dec);
+    if(!maxSlidablePercent) maxSlidablePercent = Utils.Number.round((boundary - w) / boundary * 100 * -1, dec);
+    // Index tối đa mà slide có thể kéo tới, không phải là index của slide.
+    if(!maxSlidableIndex) maxSlidableIndex = (Math.abs(boundary) / w) - 1;
 
-    // Trừ đi một slide ảo, trừ luôn 1 nữa mới về đúng index thật (zero-based).
-    if(!maxIndex) maxIndex = (Math.abs(_b) / w) - 2;
+    if(!isSliding) index -= direction;
 
-    console.log("X: ", X);
+    // Old
+    // let X = last + (direction * w);
+    // let _b = -(boundary - w);
+
+    // New
+    let percentMove = Utils.Number.round(percent * index * -1, dec);
+
+    if(index === maxSlidableIndex) percentMove = maxSlidablePercent;
+
+    // Trừ đi 2 slide ảo.
+    // maxIndex = (Math.abs(_b) / w) - 2
+
     // console.log("Boundary: ", _b);
     // console.log("Current index: ", Math.abs(_b) / Math.abs(X));
+    // console.log("Slide: ", index);
+    // console.log("Number of slides: ", boundary / w);
+    // console.log("Percent: ", percentMove);
+    // console.log("Percent Start: ", percentStart);
+    // console.log("Percent End: ", percentEnd);
 
     if(!element.style.transition) element.style.transition = T;
 
-    if(X >= _b && X <= 0 && !isSliding) {
+    // if(X >= _b && X <= 0 && !isSliding)
+    if(percentMove >= maxSlidablePercent && percentMove <= 0 && !isSliding) {
       isSliding = true;
-      element.style.transform = `translateX(${X}px)`;
-      index += -direction;
+      element.style.transform = `translateX(${percentMove}%)`;
       
-      if(X === _b) {
+      if(percentMove === maxSlidablePercent) {
         setTimeout(() => {
           element.style.transition = "";
-          element.style.transform = `translateX(${-w}px)`;
-          last = -w;
+          element.style.transform = `translateX(${percentStart}%)`;
+          // last = -w;
           isSliding = false;
         }, transitionTime);
-        index = 0;
+        index = 1;
         return index;
       }
 
-      if(X === 0) {
+      if(percentMove === 0) {
         setTimeout(() => {
           element.style.transition = "";
-          element.style.transform = `translateX(${_b + w}px)`;
-          last = _b + w;
+          element.style.transform = `translateX(${percentEnd}%)`;
+          // last = _b + w;
           isSliding = false;
         }, transitionTime);
-        index = maxIndex;
+        index = maxSlidableIndex - 1;
         return index;
       }
 
       setTimeout(() => {
         isSliding = false;
       }, transitionTime);
-      last = X;
+      // last = X;
     }
     return index;
   }
@@ -128,14 +158,12 @@ export function Slider(elements) {
   let translateX = createTranslateXFn(slidesElement);
 
   prevBtn.addEventListener("click", () => { 
-    console.log("Slide's width: ", _main.offsetWidth);
     let currentIndex = translateX(_main.offsetWidth, _main.offsetWidth * (totalElement + 2), 1);
-    currentSlideSpan.textContent = currentIndex + 1;
+    currentSlideSpan.textContent = currentIndex;
   });
   nextBtn.addEventListener("click", () => {
-    console.log("Slide's width: ", _main.offsetWidth);
     let currentIndex = translateX(_main.offsetWidth, _main.offsetWidth * (totalElement + 2), -1);
-    currentSlideSpan.textContent = currentIndex + 1;
+    currentSlideSpan.textContent = currentIndex;
   });
 
   let slides = [];

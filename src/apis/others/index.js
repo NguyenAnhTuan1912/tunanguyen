@@ -18,8 +18,13 @@ let KnownDriveFolder = Utils.Assets.KnownDriveFolder;
  * @param {string} name 
  * @param {keyof KnownDriveFolder} knownDriveFolder 
  */
-async function getDriveFilesInforAsync(name) {
+async function getSavedDriveFilesInforAsync(name) {
   let url = APIUtils.getBaseURL() + `/drive/saved/file?name=${name}`;
+  return fetch(url).then(res => res.json());
+}
+
+async function getDriveFileInforAsync(name, alt = "media") {
+  let url = APIUtils.getBaseURL() + `/drive/file?name=${name}&alt=${alt}`;
   return fetch(url).then(res => res.json());
 }
 
@@ -28,5 +33,6 @@ async function getDriveFilesInforAsync(name) {
  */
 export const OtherCallers = {
   PING,
-  getDriveFilesInforAsync
+  getSavedDriveFilesInforAsync,
+  getDriveFileInforAsync
 };

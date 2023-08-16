@@ -1,6 +1,7 @@
 import { Header } from "../../components/header/index.js";
 import { SocialMedia } from "../../components/social_media/index.js";
-import { ProjectCard } from "../../components/project_card/index.js"
+import { ProjectCard } from "../../components/project_card/index.js";
+import { Loading } from "../../components/loading/Loading.js";
 
 import { WorkCallers } from "../../apis/work/index.js";
 import { OtherCallers } from "../../apis/others/index.js";
@@ -42,14 +43,22 @@ export class Project {
   };
 
   static render() {
-    OtherCallers.PING();
     document.addEventListener("DOMContentLoaded", () => {
+      let [ element, interval ] = Loading();
       Project.Container = document.getElementById("root");
-      Project.Container.append(
-        Header(),
-        // SocialMedia(),
-        Project.components.Body()
-      );
+      Project.Container.append(element);
+
+      OtherCallers.PING()
+      .then(() => {
+        Project.Container.innerHTML = "";
+        clearInterval(interval);
+
+        Project.Container.append(
+          Header(),
+          // SocialMedia(),
+          Project.components.Body()
+        );
+      });
     });
   }
 }

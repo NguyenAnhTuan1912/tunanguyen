@@ -33,7 +33,7 @@ export const HTML = {
       <div class="body__part-1__content">
         <div class="body__part-1__container__text">
           <p class="body__part-1__text fw-bold" id="aw1__text">1%s )a=@#bd u1$%1g</p>
-          <p class="body__part-1__text" id="aw1__text-2">No one knows about its existence,<br>maybe It's older than the world.</p>
+          <p class="body__part-1__text" id="aw1__text-2"></p>
         </div>
         <div class="body__part-1__content__toggle__button">
           <p class="body__part-1__content__button">Falling Stars</p>
@@ -66,34 +66,7 @@ export const HTML = {
     <div class="body__part body__part-3" id="body_3">
       <div class="body__part-3__content p-1">
         <p class="body__part-3__title fw-bold">My skills</p>
-        <div>
-          <p>Currently, I work as Front-end developer and I am improving my skills, knowledge to go further in this field.</p>
-          <p>You can view more about my works in <span class="fw-bold"><a class="txt-clr-warning" target="_blank" href="work.html">Work</a></span></p>
-          <div class="mt-1">
-            <p class="fw-bold">Languages:</p>
-            <ul>
-              <li>Javascript</li>
-              <li>Typescript</li>
-            </ul>
-          </div>
-
-          <div class="mt-1">
-            <p class="fw-bold">Libraries/Frameworks:</p>
-            <ul>
-              <li>React</li>
-              <li>Express</li>
-              <li>ASP.NET</li>
-            </ul>
-          </div>
-
-          <div class="mt-1">
-            <p class="fw-bold">Tools:</p>
-            <ul>
-              <li>Visual Studio Code</li>
-              <li>Git</li>
-            </ul>
-          </div>
-        </div>
+        <div id="skillsContainer"><h1 style="text-align: center" class="my-2">Loading...</h1></div>
       </div>
     </div>
 

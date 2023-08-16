@@ -53,8 +53,25 @@ export class Utils {
   }
 
   static Number = {
+    /**
+     * Dùng để tạo một số bất kì từ `min` tới `max`
+     * @param {number} max 
+     * @param {number} min 
+     * @returns 
+     */
     getRandomNumber(max, min) {
       return Math.floor(Math.random() * (max - min + 1)) + min;
+    },
+
+    /**
+     * Dùng để làm tròn đến số thập phân thứ `dec` nào đó.
+     * @param {number} n 
+     * @param {number} dec 
+     * @returns 
+     */
+    round(n, dec) {
+      let _ = Math.pow(10, dec);
+      return Math.round(n * _) / _;
     }
   }
 
