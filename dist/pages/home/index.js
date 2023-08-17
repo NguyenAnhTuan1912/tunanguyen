@@ -282,7 +282,6 @@ function Loading() {
   let _i = 0;
   let _interval = setInterval(() => {
     let text = "Loading" + ".".repeat(_i % _loop);
-    console.log(text);
     loadingTxt.textContent = text;
     _i++;
   }, 500);
@@ -904,5 +903,3 @@ class Home {
 }
 
 Home.render();
-
-export { Home };
