@@ -1,6 +1,5 @@
 import { Header } from "../../components/header/index.js";
-import { SocialMedia } from "../../components/social_media/index.js";
-import { ProjectCard } from "../../components/project_card/index.js";
+import { ProjectCard } from "../../components/project_card/ProjectCard.js";
 import { Loading } from "../../components/loading/Loading.js";
 
 import { WorkCallers } from "../../apis/work/index.js";
@@ -10,7 +9,7 @@ import { html } from "./html.js";
 
 import { Utils } from "../../utils/index.js";
 
-export class Project {
+class Project {
   /**
    * @type {HTMLElement}
    */
