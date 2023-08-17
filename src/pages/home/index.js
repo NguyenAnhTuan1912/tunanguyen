@@ -1,5 +1,5 @@
 import { Header } from "../../components/header/index.js";
-import { SocialMedia } from "../../components/social_media/index.js";
+import { SocialMedia } from "../../components/social_media/SocialMedia.js";
 import { Loading } from "../../components/loading/Loading.js";
 
 import { OtherCallers } from "../../apis/others/index.js";
@@ -38,7 +38,7 @@ function createList(data, options) {
   return container;
 }
 
-export class Home {
+class Home {
   /**
    * @type {HTMLElement}
    */
@@ -145,7 +145,9 @@ export class Home {
   }
 
   static render() {
+    console.log("Start render home!!!");
     document.addEventListener("DOMContentLoaded", () => {
+      console.log("Web fully loaded!!!");
       let [ element, interval ] = Loading();
       Home.Container = document.getElementById("root");
       Home.Container.append(element);
@@ -220,5 +222,7 @@ export class Home {
     });
   }
 }
+
+console.log("Load index.js");
 
 Home.render();
