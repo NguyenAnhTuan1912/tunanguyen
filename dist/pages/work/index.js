@@ -470,6 +470,7 @@ function WorkDetailsDialog(close, item, utils) {
    */
   let data = item.getData();
   let [githubLink, npmLink, ...otherLinks] = data.links;
+  let tags = data.tags.join(", ");
   otherLinks = otherLinks.map(link => link.split("::"));
 
   let container = Utils
@@ -498,8 +499,9 @@ function WorkDetailsDialog(close, item, utils) {
         <h1>${data.name}</h1>
         <div>
           <h2>Information</h2>
+          <p><strong>Time:</strong> ${(new Date(data.startDate)).toLocaleDateString()} - ${(new Date(data.endDate)).toLocaleDateString()}</p>
           <p><strong>Type:</strong> <span class="txt-clr-error">${data.type}</span></p>
-          <p><strong>Tags:</strong> ${data.tags}</p>
+          <p><strong>Tags:</strong> ${tags}</p>
         </div>
         <div class="mt-1">
           <h2>Links</h2>
@@ -586,7 +588,7 @@ async function openWorkDetailsDialog(data) {
  * @property {{long: string, short: string}} desc
  * @property {string} type
  * @property {string} links
- * @property {string} tags
+ * @property {Array<string>} tags
  */
 
 function createLink(name, link) {
@@ -600,15 +602,17 @@ function createLink(name, link) {
  * @returns 
  */
 function ProjectCard(props) {
+  const tags = props.tags.join(", ");
+
   const html = `
     <div class="project-card">
       <div class="project-card-header">
         <img src="${props.avtLink}" alt="No Image" />
       </div>
       <div class="project-card-content p-1">
-        <p class="project-card-tags mb-1" id="tags">
-          ${props.tags}
-        </p>
+        <h5 class="project-card-tags mb-1" id="tags">
+          ${tags}
+        </h5>
         <h2 class="project-card-name">${props.name}</h2>
         <p class="project-card-desc">${props.desc.short}</p>
         <p class="txt-clr-primary" style="cursor: pointer" id="readmoreBtn">Read more</p>
