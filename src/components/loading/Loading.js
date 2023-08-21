@@ -1,4 +1,4 @@
-import { Utils } from "../../utils";
+import { Utils } from "../../utils/index.js";
 
 export function Loading() {
   let _main = Utils.Element.createElement("div", {
