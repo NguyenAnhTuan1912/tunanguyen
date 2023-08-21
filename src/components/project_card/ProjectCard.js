@@ -14,7 +14,7 @@ import { Utils } from "../../utils/index.js";
  * @property {{long: string, short: string}} desc
  * @property {string} type
  * @property {string} links
- * @property {string} tags
+ * @property {Array<string>} tags
  */
 
 function createLink(name, link) {
@@ -28,15 +28,17 @@ function createLink(name, link) {
  * @returns 
  */
 export function ProjectCard(props) {
+  const tags = props.tags.join(", ");
+
   const html = `
     <div class="project-card">
       <div class="project-card-header">
         <img src="${props.avtLink}" alt="No Image" />
       </div>
       <div class="project-card-content p-1">
-        <p class="project-card-tags mb-1" id="tags">
-          ${props.tags}
-        </p>
+        <h5 class="project-card-tags mb-1" id="tags">
+          ${tags}
+        </h5>
         <h2 class="project-card-name">${props.name}</h2>
         <p class="project-card-desc">${props.desc.short}</p>
         <p class="txt-clr-primary" style="cursor: pointer" id="readmoreBtn">Read more</p>

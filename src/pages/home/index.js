@@ -145,9 +145,7 @@ class Home {
   }
 
   static render() {
-    console.log("Start render home!!!");
     document.addEventListener("DOMContentLoaded", () => {
-      console.log("Web fully loaded!!!");
       let [ element, interval ] = Loading();
       Home.Container = document.getElementById("root");
       Home.Container.append(element);
@@ -222,7 +220,5 @@ class Home {
     });
   }
 }
-
-console.log("Load index.js");
 
 Home.render();

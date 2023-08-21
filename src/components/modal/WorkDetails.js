@@ -30,6 +30,7 @@ export function WorkDetailsDialog(close, item, utils) {
    */
   let data = item.getData();
   let [githubLink, npmLink, ...otherLinks] = data.links;
+  let tags = data.tags.join(", ");
   otherLinks = otherLinks.map(link => link.split("::"));
 
   let container = Utils
@@ -58,8 +59,9 @@ export function WorkDetailsDialog(close, item, utils) {
         <h1>${data.name}</h1>
         <div>
           <h2>Information</h2>
+          <p><strong>Time:</strong> ${(new Date(data.startDate)).toLocaleDateString()} - ${(new Date(data.endDate)).toLocaleDateString()}</p>
           <p><strong>Type:</strong> <span class="txt-clr-error">${data.type}</span></p>
-          <p><strong>Tags:</strong> ${data.tags}</p>
+          <p><strong>Tags:</strong> ${tags}</p>
         </div>
         <div class="mt-1">
           <h2>Links</h2>
