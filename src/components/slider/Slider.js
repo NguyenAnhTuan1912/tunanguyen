@@ -1,5 +1,11 @@
 import { Utils } from "../../utils/index.js";
 
+let sliderContainerStyle = {
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center"
+};
+
 let sliderStyle = {
   position: "relative",
   width: "100%",
@@ -129,7 +135,10 @@ const createTranslateXFn = function(element) {
  */
 export function Slider(elements) {
   let totalElement = elements.length;
-  const container = Utils.Element.createElement("div", { className: "slider-container" });
+  const container = Utils.Element.createElement("div", {
+    className: "slider-container",
+    style: sliderContainerStyle
+  });
   const _main = Utils.Element.createElement("div", {
     className: "slider mb-4",
     style: sliderStyle
