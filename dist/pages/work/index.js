@@ -251,6 +251,12 @@ function Header() {
   return _main;
 }
 
+let sliderContainerStyle = {
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center"
+};
+
 let sliderStyle = {
   position: "relative",
   width: "100%",
@@ -379,7 +385,10 @@ const createTranslateXFn = function(element) {
  */
 function Slider(elements) {
   let totalElement = elements.length;
-  const container = Utils.Element.createElement("div", { className: "slider-container" });
+  const container = Utils.Element.createElement("div", {
+    className: "slider-container",
+    style: sliderContainerStyle
+  });
   const _main = Utils.Element.createElement("div", {
     className: "slider mb-4",
     style: sliderStyle
@@ -477,7 +486,7 @@ function WorkDetailsDialog(close, item, utils) {
     .Element
     .createElement("div", {
       className: "work-details p-4",
-      style: utils.getContainerStyle({ borderRadius: 0, boxShadow: null, maxHeight: null })
+      style: utils.getContainerStyle({ borderRadius: 0, boxShadow: null, width: "90%", maxHeight: "90vh", maxWidth: "780px" })
     });
 
   // Close button
