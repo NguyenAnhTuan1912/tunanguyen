@@ -37,7 +37,7 @@ export function WorkDetailsDialog(close, item, utils) {
     .Element
     .createElement("div", {
       className: "work-details p-4",
-      style: utils.getContainerStyle({ borderRadius: 0, boxShadow: null, maxHeight: null })
+      style: utils.getContainerStyle({ borderRadius: 0, boxShadow: null, width: "90%", maxHeight: "90vh", maxWidth: "780px" })
     });
 
   // Close button
