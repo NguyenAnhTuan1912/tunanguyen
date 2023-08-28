@@ -95,17 +95,20 @@ export class Animation {
         let i = 1;
         let N = texts.length;
         let show = function() {
-          let currentText = texts[i % N];
-          if(options.canUseInnerHTML) {
-            txtElement.innerHTML = currentText;
-          } else {
-            txtElement.textContent = currentText;
-          };
+          try {
+            let currentText = texts[i % N];
+            if(options.canUseInnerHTML) {
+              txtElement.innerHTML = currentText;
+            } else {
+              txtElement.textContent = currentText;
+            };
+            
+            i++;
+            if(i > N - 1) i = 0;
 
-          options.runAnimation();
-
-          i++;
-          if(i > N - 1) i = 0;
+            options.runAnimation();
+          } catch (error) {
+          }
         }
 
         if(options.canUseInnerHTML) {
@@ -123,7 +126,6 @@ export class Animation {
         }, options.intervalTime);
 
         return function() { clearInterval(_) }
-
       } catch (error) {
         console.error("Animation Error: ", error.message);
       }

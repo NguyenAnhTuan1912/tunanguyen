@@ -10,14 +10,12 @@ let sliderStyle = {
   position: "relative",
   width: "100%",
   maxWidth: "960px",
-  aspectRatio: "16 / 9",
   overflowX: "hidden"
 };
 
 let slideStyle = {
   float: "left",
   height: "100%",
-  aspectRatio: "16 / 9",
   overflow: "hidden"
 };
 
@@ -182,8 +180,9 @@ export function Slider(elements) {
   for(let element of elements) {
     let slide = Utils.Element.createElement("div", {
       className: "slide",
-      style: slideStyle
+      style: { ...slideStyle, width: `calc((1 / ${totalElement + 2}) * 100 * 1%)` }
     });
+
     slide.append(element);
     slides.push(slide);
     N++;
