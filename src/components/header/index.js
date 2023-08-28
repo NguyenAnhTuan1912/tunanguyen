@@ -29,7 +29,7 @@ export function Header() {
   const logo = _main.getElementsByClassName("header__logo-svg");
   const li = _main.getElementsByClassName("header__navigate__row-1__col");
 
-  const listTransition = function() {
+  const listMoveOut = function() {
     for(let i = 0; i < li.length; i++) {
       li[i].style.transform = 'translateX(150%)';
       //li[i].style.display = 'none';
@@ -37,7 +37,7 @@ export function Header() {
     }
   }
   
-  const listMove = function() {
+  const listMoveIn = function() {
     for(let i = 0; i < li.length; i++) {
       li[i].style.transform = 'translateX(0)';
       //li[i].style.display = 'block';
@@ -46,8 +46,8 @@ export function Header() {
   }
 
   const toggleListAnimate = Utils.Fn.getToggleFn(
-    listMove,
-    listTransition
+    listMoveIn,
+    listMoveOut
   );
 
   let handleLogoClick = function(e) {

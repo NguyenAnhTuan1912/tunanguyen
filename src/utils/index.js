@@ -113,56 +113,83 @@ export class Utils {
      * @param {(match: string) => void} cb
      */
     responsive(points, cb) {
-      let mqls = [];
-      let mqlListeners = [];
-      let N = points.length;
+      try {
+        let mqls = [];
+        let mqlListeners = [];
+        let N = points.length;
 
-      let that = Utils.Other;
+        let that = Utils.Other;
 
-      for(let i = 0; i < N; i++) {
-        let range = `[${points[i - 1] + 1},${points[i]}]`;
-        let mediaBP = that.createMediaBreakPoint(points[i - 1], points[i]);
-        let mediaQueryList = window.matchMedia(mediaBP);
-
-        if(i === 0) {
-          range = `[,${points[i]}]`;
-          mediaBP = that.createMediaBreakPoint(points[i], undefined, {canQueryWithMax: true});
-          mediaQueryList = window.matchMedia(mediaBP);
-        };
-
-        let listener = function(e) {
-          if(mediaQueryList.matches) cb(range);
-        };
-
-        mediaQueryList.addEventListener("change", listener);
-
-        mqls.push(mediaQueryList);
-        mqlListeners.push(listener);
-
-        listener();
-
-        if(i === N - 1) {
-          let range = `[${points[i]},]`;
-          let mediaBP = that.createMediaBreakPoint(points[i] + 1, undefined);
+        for(let i = 0; i < N; i++) {
+          let range = `[${points[i - 1] + 1},${points[i]}]`;
+          let mediaBP = that.createMediaBreakPoint(points[i - 1], points[i]);
           let mediaQueryList = window.matchMedia(mediaBP);
 
-          listener = function(e) {
+          if(i === 0) {
+            range = `[,${points[i]}]`;
+            mediaBP = that.createMediaBreakPoint(points[i], undefined, {canQueryWithMax: true});
+            mediaQueryList = window.matchMedia(mediaBP);
+          };
+
+          let listener = function(e) {
             if(mediaQueryList.matches) cb(range);
           };
-          
-          mediaQueryList.addEventListener("change", listener);
-          
+
+          if(mediaQueryList.addEventListener) {
+            mediaQueryList.addEventListener("change", listener);
+          } else if(mediaQueryList.onchange) {
+            mediaQueryList.onchange = listener;
+          } else if(mediaQueryList.addListener) {
+            mediaQueryList.addListener(listener)
+          }
+
           mqls.push(mediaQueryList);
           mqlListeners.push(listener);
 
           listener();
-        }
-      }
 
-      return function() {
-        mqlListeners.forEach((listener, index) => {
-          mqls[index].removeEventListener('change', listener);
-        });
+          if(i === N - 1) {
+            let range = `[${points[i]},]`;
+            let mediaBP = that.createMediaBreakPoint(points[i] + 1, undefined);
+            let mediaQueryList = window.matchMedia(mediaBP);
+
+            listener = function(e) {
+              if(mediaQueryList.matches) cb(range);
+            };
+            
+            if(mediaQueryList.addEventListener) {
+              mediaQueryList.addEventListener("change", listener);
+            } else if(mediaQueryList.onchange) {
+              mediaQueryList.onchange = listener;
+            } else if(mediaQueryList.addListener) {
+              mediaQueryList.addListener(listener)
+            }
+            
+            mqls.push(mediaQueryList);
+            mqlListeners.push(listener);
+
+            listener();
+          }
+        }
+
+        return function() {
+          mqlListeners.forEach((listener, index) => {
+            if(mqls[index].addEventListener) {
+              mqls[index].removeEventListener("change", listener);
+            }
+  
+            if(mqls[index].onchange) {
+              mqls[index].onchange = null;
+            }
+  
+            if(mqls[index].removeListener) {
+              mqls[index].removeListener(listener)
+            }
+          });
+        }
+      } catch (error) {
+        console.error(error.message);
+        return () => undefined;
       }
     }
   }

@@ -26,7 +26,7 @@ header__navigate__row-1__col-3
   height: var(--header__height);
   top: 0;
   left: 0;
-  z-index: 5;
+  z-index: 7;
   background-color: var(--clr-background);
 }
 

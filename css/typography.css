@@ -71,6 +71,11 @@
   font-weight: 900;
 }
 
+.txt-wrap {
+  white-space: break-spaces;
+  word-wrap: break-word;
+}
+
 .txt-center {
   text-align: center;
 }
